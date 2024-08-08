@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const hotelRoutes = require("./api/routes/hotelRoutes");
 const personRoutes = require("./api/routes/personRoutes");
 const menuItemRoutes = require("./api/routes/menuItemRoutes");
+require("dotenv").config();
 
 app.use(morgan("dev"));
 app.use(bodyParser.json()); // req.body
@@ -19,6 +20,8 @@ app.get("/", (req, res, next) => {
   });
 });
 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
   console.log("Listening to port 3000");
 });
